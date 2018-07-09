@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".gallery.SunsetPhotoActivity" />
-        <activity android:name=".gallery.SunsetActivity"></activity>
+        <activity android:name=".gallery.SunsetActivity" />
     </application>
 
 </manifest>

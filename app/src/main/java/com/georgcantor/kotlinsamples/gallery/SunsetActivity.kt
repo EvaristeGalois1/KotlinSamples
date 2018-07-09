@@ -1,6 +1,7 @@
 package com.georgcantor.kotlinsamples.gallery
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
@@ -19,7 +20,7 @@ class SunsetActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sunset)
+        setContentView(R.layout.activity_main)
 
         val layoutManager = GridLayoutManager(this, 2)
         recyclerView = findViewById(R.id.rv_images)
@@ -33,19 +34,17 @@ class SunsetActivity : AppCompatActivity() {
         recyclerView.adapter = imageGalleryAdapter
     }
 
-    private inner class ImageGalleryAdapter(val context: Context,
-                                            val sunsetPhotos: Array<SunsetPhoto>)
+    private inner class ImageGalleryAdapter(val context: Context, val sunsetPhotos: Array<SunsetPhoto>)
         : RecyclerView.Adapter<ImageGalleryAdapter.MyViewHolder>() {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
-                : ImageGalleryAdapter.MyViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageGalleryAdapter.MyViewHolder {
             val context = parent.context
             val inflater = LayoutInflater.from(context)
             val photoView = inflater.inflate(R.layout.item_image, parent, false)
             return MyViewHolder(photoView)
         }
 
-        override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        override fun onBindViewHolder(holder: ImageGalleryAdapter.MyViewHolder, position: Int) {
             val sunsetPhoto = sunsetPhotos[position]
             val imageView = holder.photoImageView
 
@@ -55,14 +54,14 @@ class SunsetActivity : AppCompatActivity() {
                     .fit()
                     .tag(context)
                     .into(imageView)
+
         }
 
         override fun getItemCount(): Int {
             return sunsetPhotos.size
         }
 
-        inner class MyViewHolder(itemView: View)
-            : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+        inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
             var photoImageView: ImageView = itemView.findViewById(R.id.iv_photo)
 
@@ -70,10 +69,14 @@ class SunsetActivity : AppCompatActivity() {
                 itemView.setOnClickListener(this)
             }
 
-            override fun onClick(v: View) {
+            override fun onClick(view: View) {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-
+                    val sunsetPhoto = sunsetPhotos[position]
+                    val intent = Intent(context, SunsetPhotoActivity::class.java).apply {
+                        putExtra(SunsetPhotoActivity.EXTRA_SUNSET_PHOTO, sunsetPhoto)
+                    }
+                    startActivity(intent)
                 }
             }
         }
