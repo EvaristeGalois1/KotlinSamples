@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".gallery.SunsetPhotoActivity" />
         <activity android:name=".gallery.SunsetActivity" />
+        <activity android:name=".mvvm.ui.PostListActivity"></activity>
     </application>
 
 </manifest>
