@@ -1,6 +1,7 @@
 package com.georgcantor.kotlinsamples.mvvm.di.component
 
 import com.georgcantor.kotlinsamples.mvvm.di.module.NetworkModule
+import com.georgcantor.kotlinsamples.mvvm.ui.PostListViewModel
 import dagger.Component
 import javax.inject.Singleton
 

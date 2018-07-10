@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModelProvider
 import android.arch.persistence.room.Room
 import android.support.v7.app.AppCompatActivity
 import com.georgcantor.kotlinsamples.mvvm.model.db.AppDatabase
+import com.georgcantor.kotlinsamples.mvvm.ui.PostListViewModel
 
 class ViewModelFactory(private val activity: AppCompatActivity) : ViewModelProvider.Factory {
 

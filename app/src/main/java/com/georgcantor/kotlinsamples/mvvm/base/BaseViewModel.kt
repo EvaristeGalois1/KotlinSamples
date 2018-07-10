@@ -1,6 +1,7 @@
 package com.georgcantor.kotlinsamples.mvvm.base
 
 import android.arch.lifecycle.ViewModel
+import com.georgcantor.kotlinsamples.mvvm.di.component.DaggerViewModelInjector
 import com.georgcantor.kotlinsamples.mvvm.di.component.ViewModelInjector
 import com.georgcantor.kotlinsamples.mvvm.di.module.NetworkModule
 import com.georgcantor.kotlinsamples.mvvm.ui.PostListViewModel

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.georgcantor.kotlinsamples.gallery.SunsetActivity
+import com.georgcantor.kotlinsamples.mvvm.ui.PostListActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +16,11 @@ class MainActivity : AppCompatActivity() {
 
     fun galleryClick(view: View) {
         val intent = Intent(this, SunsetActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun mvvmClick(view: View) {
+        val intent = Intent(this, PostListActivity::class.java)
         startActivity(intent)
     }
 }
