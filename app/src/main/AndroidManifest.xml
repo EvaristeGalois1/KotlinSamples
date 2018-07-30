@@ -20,7 +20,11 @@
         </activity>
         <activity android:name=".gallery.SunsetPhotoActivity" />
         <activity android:name=".gallery.SunsetActivity" />
-        <activity android:name=".mvvm.ui.PostListActivity"></activity>
+        <activity android:name=".mvvm.ui.PostListActivity" />
+        <activity android:name=".ringtone.RingtoneActivity" />
+        <activity android:name=".exoplayer.ExoActivity" />
+        <activity android:name=".exoplayer.RadioActivity" />
+        <activity android:name=".exoplayer.VideoActivity"></activity>
     </application>
 
 </manifest>
