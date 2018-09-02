@@ -8,6 +8,7 @@ import com.georgcantor.kotlinsamples.broadcast.BroadcastActivity
 import com.georgcantor.kotlinsamples.exoplayer.ExoActivity
 import com.georgcantor.kotlinsamples.gallery.SunsetActivity
 import com.georgcantor.kotlinsamples.mvvm.ui.PostListActivity
+import com.georgcantor.kotlinsamples.torch.TorchActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +34,11 @@ class MainActivity : AppCompatActivity() {
 
     fun goToBroadcastActivity(view: View) {
         val intent = Intent(this, BroadcastActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun torchClick(view: View) {
+        val intent = Intent(this, TorchActivity::class.java)
         startActivity(intent)
     }
 }

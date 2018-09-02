@@ -4,4 +4,6 @@
     <string name="retry">Retry</string>
     <string name="post_error">An error occurred while loading the posts</string>
     <string name="send_local_broadcast">Send broadcast</string>
+    <string name="oops_alert_dialog">Oops…</string>
+    <string name="alert_message">Flash not available in this device</string>
 </resources>
