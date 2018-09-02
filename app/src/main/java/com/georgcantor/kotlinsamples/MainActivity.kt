@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.georgcantor.kotlinsamples.broadcast.BroadcastActivity
 import com.georgcantor.kotlinsamples.exoplayer.ExoActivity
 import com.georgcantor.kotlinsamples.gallery.SunsetActivity
 import com.georgcantor.kotlinsamples.mvvm.ui.PostListActivity
@@ -27,6 +28,11 @@ class MainActivity : AppCompatActivity() {
 
     fun exoClick(view: View) {
         val intent = Intent(this, ExoActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun goToBroadcastActivity(view: View) {
+        val intent = Intent(this, BroadcastActivity::class.java)
         startActivity(intent)
     }
 }
