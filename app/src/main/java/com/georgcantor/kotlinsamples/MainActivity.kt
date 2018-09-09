@@ -8,7 +8,7 @@ import com.georgcantor.kotlinsamples.broadcast.BroadcastActivity
 import com.georgcantor.kotlinsamples.exoplayer.ExoActivity
 import com.georgcantor.kotlinsamples.gallery.SunsetActivity
 import com.georgcantor.kotlinsamples.mvvm.ui.PostListActivity
-import com.georgcantor.kotlinsamples.torch.TorchActivity
+import com.georgcantor.kotlinsamples.riddles.RiddleActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun torchClick(view: View) {
-        val intent = Intent(this, TorchActivity::class.java)
+        val intent = Intent(this, RiddleActivity::class.java)
         startActivity(intent)
     }
 }

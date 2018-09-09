@@ -30,7 +30,8 @@
         <activity android:name=".exoplayer.VideoActivity" />
         <activity android:name=".broadcast.BroadcastActivity" />
         <activity android:name=".recyclerview.RestActivity" />
-        <activity android:name=".torch.TorchActivity"></activity>
+        <activity android:name=".torch.TorchActivity" />
+        <activity android:name=".riddles.RiddleActivity"></activity>
     </application>
 
 </manifest>
