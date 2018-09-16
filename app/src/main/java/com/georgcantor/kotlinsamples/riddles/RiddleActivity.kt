@@ -32,6 +32,10 @@ class RiddleActivity : AppCompatActivity() {
         increase(observable)
     }
 
+    fun streamClick(view: View) {
+        startStream()
+    }
+
     private fun solve(list: List<Int>): Observable<List<Int>>? {
         val valueObservable = Observable.just(list)
 
@@ -82,5 +86,36 @@ class RiddleActivity : AppCompatActivity() {
             }
         }
         observable.subscribe(observer)
+    }
+
+    private fun startStream() {
+        val myObservable = getObservable()
+        val myObserver = getObserver()
+
+        myObservable.subscribe(myObserver)
+    }
+
+    private fun getObserver(): Observer<String> {
+        return object : Observer<String> {
+
+            override fun onSubscribe(d: Disposable) {
+            }
+
+            override fun onNext(t: String) {
+                Toast.makeText(this@RiddleActivity,
+                        "onNext: $t", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onComplete() {
+            }
+
+            override fun onError(e: Throwable) {
+            }
+
+        }
+    }
+
+    private fun getObservable(): Observable<String> {
+        return Observable.just("1", "2", "3", "4")
     }
 }
