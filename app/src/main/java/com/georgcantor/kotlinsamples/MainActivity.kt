@@ -9,6 +9,7 @@ import com.georgcantor.kotlinsamples.exoplayer.ExoActivity
 import com.georgcantor.kotlinsamples.gallery.SunsetActivity
 import com.georgcantor.kotlinsamples.mvvm.ui.PostListActivity
 import com.georgcantor.kotlinsamples.riddles.RiddleActivity
+import com.georgcantor.kotlinsamples.rxclick.RxClickActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,6 +40,11 @@ class MainActivity : AppCompatActivity() {
 
     fun torchClick(view: View) {
         val intent = Intent(this, RiddleActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun rxClick(view: View) {
+        val intent = Intent(this, RxClickActivity::class.java)
         startActivity(intent)
     }
 }

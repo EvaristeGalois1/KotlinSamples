@@ -13,16 +13,23 @@ import io.reactivex.disposables.Disposable
 class RiddleActivity : AppCompatActivity() {
 
     private lateinit var list: List<Int>
+    private lateinit var observable: Observable<Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_riddle)
+
+        observable = Observable.range(1, 10)
 
         list = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9)
     }
 
     fun justClick(view: View) {
         solve(list)
+    }
+
+    fun increaseClick(view: View) {
+        increase(observable)
     }
 
     private fun solve(list: List<Int>): Observable<List<Int>>? {
@@ -49,5 +56,31 @@ class RiddleActivity : AppCompatActivity() {
             }
         })
         return valueObservable
+    }
+
+    private fun increase(source: Observable<Int>) {
+        val observer = object : Observer<Int> {
+
+            override fun onSubscribe(d: Disposable) {
+                Toast.makeText(this@RiddleActivity,
+                        "onSubscribe", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onNext(t: Int) {
+                Toast.makeText(this@RiddleActivity,
+                        observable.toString(), Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onComplete() {
+                Toast.makeText(this@RiddleActivity,
+                        "onComplete", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onError(e: Throwable) {
+                Toast.makeText(this@RiddleActivity,
+                        "onError", Toast.LENGTH_SHORT).show()
+            }
+        }
+        observable.subscribe(observer)
     }
 }
