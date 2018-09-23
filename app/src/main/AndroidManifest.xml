@@ -32,7 +32,8 @@
         <activity android:name=".recyclerview.RestActivity" />
         <activity android:name=".torch.TorchActivity" />
         <activity android:name=".riddles.RiddleActivity" />
-        <activity android:name=".rxclick.RxClickActivity"></activity>
+        <activity android:name=".rxclick.RxClickActivity" />
+        <activity android:name=".anim.AnimActivity"></activity>
     </application>
 
 </manifest>

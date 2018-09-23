@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.georgcantor.kotlinsamples.anim.AnimActivity
 import com.georgcantor.kotlinsamples.broadcast.BroadcastActivity
 import com.georgcantor.kotlinsamples.exoplayer.ExoActivity
 import com.georgcantor.kotlinsamples.gallery.SunsetActivity
@@ -45,6 +46,11 @@ class MainActivity : AppCompatActivity() {
 
     fun rxClick(view: View) {
         val intent = Intent(this, RxClickActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun animClick(view: View) {
+        val intent = Intent(this, AnimActivity::class.java)
         startActivity(intent)
     }
 }
