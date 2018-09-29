@@ -33,7 +33,8 @@
         <activity android:name=".torch.TorchActivity" />
         <activity android:name=".riddles.RiddleActivity" />
         <activity android:name=".rxclick.RxClickActivity" />
-        <activity android:name=".anim.AnimActivity"></activity>
+        <activity android:name=".anim.AnimActivity" />
+        <activity android:name=".newanim.NewAnimActivity"></activity>
     </application>
 
 </manifest>
