@@ -6,4 +6,5 @@
     <string name="send_local_broadcast">Send broadcast</string>
     <string name="oops_alert_dialog">Oops…</string>
     <string name="alert_message">Flash not available in this device</string>
+    <string name="transition_name">transition name</string>
 </resources>
