@@ -5,11 +5,20 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/btn_execute"
+        android:id="@+id/btn_execute_flatmap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="executeClick"
-        android:text="Click here to execute"
+        android:onClick="execFlatMapClick"
+        android:text="Click here to execute flatMap"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black" />
+
+    <Button
+        android:id="@+id/btn_execute_merge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="execMergeClick"
+        android:text="Click here to execute merge"
         android:textAllCaps="false"
         android:textColor="@android:color/black" />
 

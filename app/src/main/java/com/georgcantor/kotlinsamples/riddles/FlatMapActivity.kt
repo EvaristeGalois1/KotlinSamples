@@ -19,21 +19,25 @@ class FlatMapActivity : AppCompatActivity() {
         setContentView(R.layout.activity_flat_map)
     }
 
-    fun executeClick(view: View) {
+    fun execFlatMapClick(view: View) {
         executeFlatMap()
+    }
+
+    fun execMergeClick(view: View) {
+        executeMerge()
     }
 
     private fun executeFlatMap() {
         getObservable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .flatMap { int -> multiply(int, 5) }
-                .flatMap { int -> multiply(int, 88) }
+                .flatMap { int -> multiply(int, 10) }
+                .flatMap { int -> multiply(int, 10) }
                 .subscribe(getObserver())
     }
 
     private fun getObservable(): Observable<Int> {
-        return Observable.just(9, 8, 7, 6, 5)
+        return Observable.just(1, 2, 3)
     }
 
     private fun getObserver(): Observer<Int> {
@@ -45,7 +49,7 @@ class FlatMapActivity : AppCompatActivity() {
             }
 
             override fun onNext(t: Int) {
-                textView_flatmap.append("onNext : value : $t")
+                textView_flatmap.append(" onNext : value : $t")
             }
 
             override fun onError(e: Throwable) {
@@ -60,8 +64,15 @@ class FlatMapActivity : AppCompatActivity() {
     }
 
     private fun multiply(int: Int?, multiplier: Int): Observable<Int>? {
-        Thread.sleep(1000)
-
         return Observable.just(int!! * multiplier)
+    }
+
+
+    private fun executeMerge() {
+        val cars = arrayOf("Audi", "BMW", "KIA")
+        val countries = arrayOf("Russia", "USA", "Canada")
+
+        val carObservable = Observable.fromArray(cars)
+        val countryObservable = Observable.fromArray(countries)
     }
 }
