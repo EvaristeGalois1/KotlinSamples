@@ -9,6 +9,7 @@ import com.georgcantor.kotlinsamples.broadcast.BroadcastActivity
 import com.georgcantor.kotlinsamples.exoplayer.ExoActivity
 import com.georgcantor.kotlinsamples.gallery.SunsetActivity
 import com.georgcantor.kotlinsamples.mvvm.ui.PostListActivity
+import com.georgcantor.kotlinsamples.riddles.FlatMapActivity
 import com.georgcantor.kotlinsamples.riddles.RiddleActivity
 import com.georgcantor.kotlinsamples.rxclick.RxClickActivity
 
@@ -51,6 +52,11 @@ class MainActivity : AppCompatActivity() {
 
     fun animClick(view: View) {
         val intent = Intent(this, AnimActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun flatMapClick(view: View) {
+        val intent = Intent(this, FlatMapActivity::class.java)
         startActivity(intent)
     }
 }
