@@ -35,7 +35,8 @@
         <activity android:name=".rxclick.RxClickActivity" />
         <activity android:name=".anim.AnimActivity" />
         <activity android:name=".newanim.NewAnimActivity" />
-        <activity android:name=".riddles.FlatMapActivity"></activity>
+        <activity android:name=".riddles.FlatMapActivity" />
+        <activity android:name=".rxbitmap.ui.RxBitmapActivity"></activity>
     </application>
 
 </manifest>

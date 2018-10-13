@@ -7,4 +7,7 @@
     <string name="oops_alert_dialog">Oops…</string>
     <string name="alert_message">Flash not available in this device</string>
     <string name="transition_name">transition name</string>
+    <string name="apple">Apple</string>
+    <string name="orange">Orange</string>
+    <string name="banana">Banana</string>
 </resources>
