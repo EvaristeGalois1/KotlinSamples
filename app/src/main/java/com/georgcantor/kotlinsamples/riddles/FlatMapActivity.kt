@@ -72,7 +72,30 @@ class FlatMapActivity : AppCompatActivity() {
         val cars = arrayOf("Audi", "BMW", "KIA")
         val countries = arrayOf("Russia", "USA", "Canada")
 
-        val carObservable = Observable.fromArray(cars)
-        val countryObservable = Observable.fromArray(countries)
+        val carObservable = Observable.fromArray(*cars)
+        val countryObservable = Observable.fromArray(*countries)
+
+        Observable.merge(carObservable, countryObservable)
+                .subscribe(getStringObserver())
+    }
+
+    private fun getStringObserver(): Observer<String> {
+        return object : Observer<String> {
+
+            override fun onSubscribe(d: Disposable) {
+            }
+
+            override fun onNext(t: String) {
+                textView_flatmap.append(" onNext : value : $t")
+            }
+
+            override fun onError(e: Throwable) {
+            }
+
+            override fun onComplete() {
+                Toast.makeText(this@FlatMapActivity,
+                        "onComplete getStringObserver()", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
