@@ -10,7 +10,7 @@ import com.georgcantor.kotlinsamples.exoplayer.ExoActivity
 import com.georgcantor.kotlinsamples.gallery.SunsetActivity
 import com.georgcantor.kotlinsamples.mvvm.ui.PostListActivity
 import com.georgcantor.kotlinsamples.riddles.RiddleActivity
-import com.georgcantor.kotlinsamples.rxbitmap.ui.RxBitmapActivity
+import com.georgcantor.kotlinsamples.riddles.SumActivity
 import com.georgcantor.kotlinsamples.rxclick.RxClickActivity
 
 class MainActivity : AppCompatActivity() {
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun flatMapClick(view: View) {
-        val intent = Intent(this, RxBitmapActivity::class.java)
+        val intent = Intent(this, SumActivity::class.java)
         startActivity(intent)
     }
 }
