@@ -13,6 +13,7 @@ import com.georgcantor.kotlinsamples.riddles.RiddleActivity
 import com.georgcantor.kotlinsamples.riddles.SumActivity
 import com.georgcantor.kotlinsamples.riddles.ZipRxActivity
 import com.georgcantor.kotlinsamples.rxclick.RxClickActivity
+import com.georgcantor.kotlinsamples.rxriddle.RxSolveActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -63,6 +64,11 @@ class MainActivity : AppCompatActivity() {
 
     fun zipClick(view: View) {
         val intent = Intent(this, ZipRxActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun filterClick(view: View) {
+        val intent = Intent(this, RxSolveActivity::class.java)
         startActivity(intent)
     }
 }

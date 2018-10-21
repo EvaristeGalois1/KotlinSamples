@@ -38,7 +38,8 @@
         <activity android:name=".riddles.FlatMapActivity" />
         <activity android:name=".rxbitmap.ui.RxBitmapActivity" />
         <activity android:name=".riddles.SumActivity" />
-        <activity android:name=".riddles.ZipRxActivity"></activity>
+        <activity android:name=".riddles.ZipRxActivity" />
+        <activity android:name=".rxriddle.RxSolveActivity"></activity>
     </application>
 
 </manifest>
