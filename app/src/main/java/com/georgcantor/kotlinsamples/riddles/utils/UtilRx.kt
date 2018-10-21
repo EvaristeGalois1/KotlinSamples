@@ -37,17 +37,19 @@ class UtilRx {
 
             return list
         }
-    }
 
-    fun filterNamesakes(footballPlayers: ArrayList<Player>, hockeyPlayers: ArrayList<Player>) {
-        val namesakes = ArrayList<Player>()
+        fun filterNamesakes(footballPlayers: ArrayList<Player>, hockeyPlayers: ArrayList<Player>): ArrayList<Player> {
+            val namesakes = ArrayList<Player>()
 
-        for (footballPlayer in footballPlayers) {
-            for (hockeyPlayer in hockeyPlayers) {
-                if (footballPlayer.lastName === hockeyPlayer.lastName) {
-                    namesakes.add(footballPlayer)
+            for (footballPlayer in footballPlayers) {
+                for (hockeyPlayer in hockeyPlayers) {
+                    if (footballPlayer.lastName === hockeyPlayer.lastName) {
+                        namesakes.add(footballPlayer)
+                    }
                 }
             }
+
+            return namesakes
         }
     }
 }

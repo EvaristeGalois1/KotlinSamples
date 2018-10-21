@@ -11,6 +11,7 @@ import com.georgcantor.kotlinsamples.gallery.SunsetActivity
 import com.georgcantor.kotlinsamples.mvvm.ui.PostListActivity
 import com.georgcantor.kotlinsamples.riddles.RiddleActivity
 import com.georgcantor.kotlinsamples.riddles.SumActivity
+import com.georgcantor.kotlinsamples.riddles.ZipRxActivity
 import com.georgcantor.kotlinsamples.rxclick.RxClickActivity
 
 class MainActivity : AppCompatActivity() {
@@ -57,6 +58,11 @@ class MainActivity : AppCompatActivity() {
 
     fun flatMapClick(view: View) {
         val intent = Intent(this, SumActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun zipClick(view: View) {
+        val intent = Intent(this, ZipRxActivity::class.java)
         startActivity(intent)
     }
 }
