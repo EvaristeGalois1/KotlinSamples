@@ -41,7 +41,7 @@
         <activity android:name=".riddles.ZipRxActivity" />
         <activity android:name=".rxriddle.RxSolveActivity" />
         <activity android:name=".rxriddle.ReceiveActivity" />
-        <activity android:name=".rxriddle.ValidateActivity"></activity>
+        <activity android:name=".validation.ValidateActivity"></activity>
     </application>
 
 </manifest>
