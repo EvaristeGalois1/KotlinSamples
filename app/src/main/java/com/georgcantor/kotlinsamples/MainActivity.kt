@@ -7,13 +7,13 @@ import android.view.View
 import com.georgcantor.kotlinsamples.anim.AnimActivity
 import com.georgcantor.kotlinsamples.broadcast.BroadcastActivity
 import com.georgcantor.kotlinsamples.exoplayer.ExoActivity
-import com.georgcantor.kotlinsamples.gallery.SunsetActivity
 import com.georgcantor.kotlinsamples.mvvm.ui.PostListActivity
 import com.georgcantor.kotlinsamples.riddles.RiddleActivity
+import com.georgcantor.kotlinsamples.riddles.SubjectActivity
 import com.georgcantor.kotlinsamples.riddles.SumActivity
 import com.georgcantor.kotlinsamples.riddles.ZipRxActivity
+import com.georgcantor.kotlinsamples.rxcalculator.CalcActivity
 import com.georgcantor.kotlinsamples.rxclick.RxClickActivity
-import com.georgcantor.kotlinsamples.rxriddle.RxSolveActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun galleryClick(view: View) {
-        val intent = Intent(this, SunsetActivity::class.java)
+        val intent = Intent(this, CalcActivity::class.java)
         startActivity(intent)
     }
 
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun filterClick(view: View) {
-        val intent = Intent(this, RxSolveActivity::class.java)
+        val intent = Intent(this, SubjectActivity::class.java)
         startActivity(intent)
     }
 }

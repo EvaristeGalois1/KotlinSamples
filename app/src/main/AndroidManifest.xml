@@ -42,7 +42,9 @@
         <activity android:name=".rxriddle.RxSolveActivity" />
         <activity android:name=".rxriddle.ReceiveActivity" />
         <activity android:name=".validation.ValidateActivity" />
-        <activity android:name=".rxcalculator.CalculatorActivity"></activity>
+        <activity android:name=".rxcalculator.CalculatorActivity" />
+        <activity android:name=".rxcalculator.CalcActivity" />
+        <activity android:name=".riddles.SubjectActivity"></activity>
     </application>
 
 </manifest>
