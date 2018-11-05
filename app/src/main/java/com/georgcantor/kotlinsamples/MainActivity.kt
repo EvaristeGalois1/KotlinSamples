@@ -9,9 +9,9 @@ import com.georgcantor.kotlinsamples.anim.AnimActivity
 import com.georgcantor.kotlinsamples.broadcast.BroadcastActivity
 import com.georgcantor.kotlinsamples.exoplayer.ExoActivity
 import com.georgcantor.kotlinsamples.mvvm.ui.PostListActivity
+import com.georgcantor.kotlinsamples.riddles.FlatMapActivity
 import com.georgcantor.kotlinsamples.riddles.RiddleActivity
 import com.georgcantor.kotlinsamples.riddles.SumActivity
-import com.georgcantor.kotlinsamples.riddles.ZipRxActivity
 import com.georgcantor.kotlinsamples.rxcalculator.CalcActivity
 import com.georgcantor.kotlinsamples.rxclick.RxClickActivity
 
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun zipClick(view: View) {
-        val intent = Intent(this, ZipRxActivity::class.java)
+        val intent = Intent(this, FlatMapActivity::class.java)
         startActivity(intent)
     }
 

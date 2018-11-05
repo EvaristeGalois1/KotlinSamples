@@ -17,6 +17,8 @@ class FlatMapActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_flat_map)
+
+        exampleMap()
     }
 
     fun execFlatMapClick(view: View) {
@@ -97,5 +99,15 @@ class FlatMapActivity : AppCompatActivity() {
                         "onComplete getStringObserver()", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun exampleMap() {
+        val numbers = arrayOf(1, 2, 3, 4, 5, 6, 7)
+        val numObservable = Observable
+                .fromArray(*numbers)
+                .map { it ->
+                    it.plus(10)
+                }
+                .subscribe(getObserver())
     }
 }
