@@ -11,8 +11,23 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_flat_map.*
+import java.util.*
+
 
 class FlatMapActivity : AppCompatActivity() {
+
+
+    companion object {
+        private val cities = Arrays.asList("Moscow", "Dallas", "London", "Chita")
+
+        fun getNumObservable(): Observable<Int> {
+            return Observable.just(1, 1, 1, 1, 1, 1, 1)
+        }
+
+        fun cityList(): Observable<MutableList<String>>? {
+            return Observable.fromArray(cities)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

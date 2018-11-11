@@ -8,6 +8,10 @@ import com.georgcantor.kotlinsamples.R
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
+import kotlinx.android.synthetic.main.activity_riddle.*
+
+
+
 
 
 class RiddleActivity : AppCompatActivity() {
@@ -18,6 +22,9 @@ class RiddleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_riddle)
+
+        listOfCities(observerList())
+//        listOf1(observer())
 
         observable = Observable.range(1, 10)
 
@@ -117,5 +124,55 @@ class RiddleActivity : AppCompatActivity() {
 
     private fun getObservable(): Observable<String> {
         return Observable.just("1", "2", "3", "4")
+    }
+
+    private fun listOf1(observer: Observer<Int>) {
+        FlatMapActivity.getNumObservable()
+                .map { it ->
+                    it.minus(1)
+                }
+                .doFinally { Toast.makeText(this, "Stop", Toast.LENGTH_LONG).show() }
+                .subscribe(observer)
+    }
+
+    private fun observer(): Observer<Int> {
+        return object : Observer<Int> {
+            override fun onComplete() {
+            }
+
+            override fun onSubscribe(d: Disposable) {
+            }
+
+            override fun onNext(t: Int) {
+                textViewRiddle.text = t.toString()
+            }
+
+            override fun onError(e: Throwable) {
+            }
+
+        }
+    }
+
+    private fun listOfCities(observer: Observer<MutableList<String>>) {
+        FlatMapActivity.cityList()?.map { it -> "city$it" }?.subscribe()
+    }
+
+    private fun observerList(): Observer<MutableList<String>> {
+        return object : Observer<MutableList<String>> {
+
+            override fun onNext(t: MutableList<String>) {
+                textViewRiddle.text = t.toString()
+            }
+
+            override fun onComplete() {
+            }
+
+            override fun onSubscribe(d: Disposable) {
+            }
+
+            override fun onError(e: Throwable) {
+            }
+
+        }
     }
 }

@@ -45,7 +45,8 @@
         <activity android:name=".rxcalculator.CalculatorActivity" />
         <activity android:name=".rxcalculator.CalcActivity" />
         <activity android:name=".riddles.SubjectActivity" />
-        <activity android:name=".algorithms.FibonacciActivity"></activity>
+        <activity android:name=".algorithms.FibonacciActivity" />
+        <activity android:name=".roulette.RouletteActivity"></activity>
     </application>
 
 </manifest>
