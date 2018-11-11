@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.georgcantor.kotlinsamples.algorithms.FibonacciActivity
 import com.georgcantor.kotlinsamples.anim.AnimActivity
 import com.georgcantor.kotlinsamples.broadcast.BroadcastActivity
 import com.georgcantor.kotlinsamples.exoplayer.ExoActivity
@@ -12,6 +11,7 @@ import com.georgcantor.kotlinsamples.mvvm.ui.PostListActivity
 import com.georgcantor.kotlinsamples.riddles.FlatMapActivity
 import com.georgcantor.kotlinsamples.riddles.RiddleActivity
 import com.georgcantor.kotlinsamples.riddles.SumActivity
+import com.georgcantor.kotlinsamples.roulette.RouletteActivity
 import com.georgcantor.kotlinsamples.rxcalculator.CalcActivity
 import com.georgcantor.kotlinsamples.rxclick.RxClickActivity
 
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun filterClick(view: View) {
-        val intent = Intent(this, FibonacciActivity::class.java)
+        val intent = Intent(this, RouletteActivity::class.java)
         startActivity(intent)
     }
 }

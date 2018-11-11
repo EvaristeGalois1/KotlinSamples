@@ -2,8 +2,14 @@ package com.georgcantor.kotlinsamples.roulette
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.DecelerateInterpolator
+import android.view.animation.RotateAnimation
 import com.georgcantor.kotlinsamples.R
+import kotlinx.android.synthetic.main.activity_roulette.*
 import java.util.*
+
 
 class RouletteActivity : AppCompatActivity() {
 
@@ -21,5 +27,50 @@ class RouletteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_roulette)
+    }
+
+    fun spinClick(view: View) {
+        degreeOld = degree % 360
+        degree = random.nextInt(360) + 720
+
+        val rotateAnim = RotateAnimation(degreeOld.toFloat(), degree.toFloat(),
+                RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                RotateAnimation.RELATIVE_TO_SELF, 0.5f)
+        rotateAnim.duration = 3600
+        rotateAnim.fillAfter = true
+        rotateAnim.interpolator = DecelerateInterpolator()
+        rotateAnim.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation) {
+                resultTv.text = ""
+            }
+
+            override fun onAnimationEnd(animation: Animation) {
+                resultTv.text = getSector(360 - degree % 360)
+            }
+
+            override fun onAnimationRepeat(animation: Animation) {
+            }
+        })
+
+        wheel.startAnimation(rotateAnim)
+    }
+
+    private fun getSector(degrees: Int): String? {
+        var i = 0
+        var text: String? = null
+
+        do {
+            val start = half_sector * (i * 2 + 1)
+            val end = half_sector * (i * 2 + 3)
+
+            if (degrees >= start && degrees < end) {
+                text = sectors[i]
+            }
+
+            i++
+
+        } while (text == null && i < sectors.size)
+
+        return text
     }
 }
