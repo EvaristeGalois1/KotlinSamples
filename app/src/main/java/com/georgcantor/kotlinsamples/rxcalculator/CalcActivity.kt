@@ -2,31 +2,22 @@ package com.georgcantor.kotlinsamples.rxcalculator
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.text.SpannableStringBuilder
 import android.view.View
 import com.georgcantor.kotlinsamples.R
 import kotlinx.android.synthetic.main.activity_calculator.*
 
+
 class CalcActivity : AppCompatActivity() {
 
     private var firstValue: Int = 0
     private var secondValue: Int = 0
     private var resultValue: Int = 0
-
     private var typeOfOperator: Int = 0
 
-    private var isFirstClick1: Boolean = true
-    private var isFirstClick2: Boolean = true
-    private var isFirstClick3: Boolean = true
-    private var isFirstClick4: Boolean = true
-    private var isFirstClick5: Boolean = true
-    private var isFirstClick6: Boolean = true
-    private var isFirstClick7: Boolean = true
-    private var isFirstClick8: Boolean = true
-    private var isFirstClick9: Boolean = true
-    private var isFirstClick0: Boolean = true
-
+    private var isFirstClick: Boolean = true
     private var isOperatorClick: Boolean = false
     private var resultIsEmpty: Boolean = true
 
@@ -35,27 +26,23 @@ class CalcActivity : AppCompatActivity() {
         setContentView(R.layout.activity_calculator)
     }
 
-    fun clearClick(view: View) {
-        restartActivity()
-    }
-
     fun click1(view: View) {
         if (resultIsEmpty) {
             if (!isOperatorClick) {
-                if (isFirstClick1) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("1")
                     firstValue = 1
-                    isFirstClick1 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (firstValue.toString() + "1")
                     et_field.text = SpannableStringBuilder(value)
                     firstValue = Integer.parseInt(value)
                 }
             } else {
-                if (isFirstClick1) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("1")
                     secondValue = 1
-                    isFirstClick1 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (secondValue.toString() + "1")
                     et_field.text = SpannableStringBuilder(value)
@@ -64,12 +51,12 @@ class CalcActivity : AppCompatActivity() {
             }
         } else {
             firstValue = resultValue
-            if (isFirstClick2) {
-                et_field.text = SpannableStringBuilder("2")
-                secondValue = 2
-                isFirstClick2 = false
+            if (isFirstClick) {
+                et_field.text = SpannableStringBuilder("1")
+                secondValue = 1
+                isFirstClick = false
             } else {
-                val value: String = (secondValue.toString() + "2")
+                val value: String = (secondValue.toString() + "1")
                 et_field.text = SpannableStringBuilder(value)
                 secondValue = Integer.parseInt(value)
             }
@@ -79,20 +66,20 @@ class CalcActivity : AppCompatActivity() {
     fun click2(view: View) {
         if (resultIsEmpty) {
             if (!isOperatorClick) {
-                if (isFirstClick2) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("2")
                     firstValue = 2
-                    isFirstClick2 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (firstValue.toString() + "2")
                     et_field.text = SpannableStringBuilder(value)
                     firstValue = Integer.parseInt(value)
                 }
             } else {
-                if (isFirstClick2) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("2")
                     secondValue = 2
-                    isFirstClick2 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (secondValue.toString() + "2")
                     et_field.text = SpannableStringBuilder(value)
@@ -101,10 +88,10 @@ class CalcActivity : AppCompatActivity() {
             }
         } else {
             firstValue = resultValue
-            if (isFirstClick2) {
+            if (isFirstClick) {
                 et_field.text = SpannableStringBuilder("2")
                 secondValue = 2
-                isFirstClick2 = false
+                isFirstClick = false
             } else {
                 val value: String = (secondValue.toString() + "2")
                 et_field.text = SpannableStringBuilder(value)
@@ -116,20 +103,20 @@ class CalcActivity : AppCompatActivity() {
     fun click3(view: View) {
         if (resultIsEmpty) {
             if (!isOperatorClick) {
-                if (isFirstClick3) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("3")
                     firstValue = 3
-                    isFirstClick3 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (firstValue.toString() + "3")
                     et_field.text = SpannableStringBuilder(value)
                     firstValue = Integer.parseInt(value)
                 }
             } else {
-                if (isFirstClick3) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("3")
                     secondValue = 3
-                    isFirstClick3 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (secondValue.toString() + "3")
                     et_field.text = SpannableStringBuilder(value)
@@ -138,10 +125,10 @@ class CalcActivity : AppCompatActivity() {
             }
         } else {
             firstValue = resultValue
-            if (isFirstClick3) {
+            if (isFirstClick) {
                 et_field.text = SpannableStringBuilder("3")
                 secondValue = 3
-                isFirstClick3 = false
+                isFirstClick = false
             } else {
                 val value: String = (secondValue.toString() + "3")
                 et_field.text = SpannableStringBuilder(value)
@@ -153,20 +140,20 @@ class CalcActivity : AppCompatActivity() {
     fun click4(view: View) {
         if (resultIsEmpty) {
             if (!isOperatorClick) {
-                if (isFirstClick4) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("4")
                     firstValue = 4
-                    isFirstClick4 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (firstValue.toString() + "4")
                     et_field.text = SpannableStringBuilder(value)
                     firstValue = Integer.parseInt(value)
                 }
             } else {
-                if (isFirstClick4) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("4")
                     secondValue = 4
-                    isFirstClick4 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (secondValue.toString() + "4")
                     et_field.text = SpannableStringBuilder(value)
@@ -175,10 +162,10 @@ class CalcActivity : AppCompatActivity() {
             }
         } else {
             firstValue = resultValue
-            if (isFirstClick4) {
+            if (isFirstClick) {
                 et_field.text = SpannableStringBuilder("4")
                 secondValue = 4
-                isFirstClick4 = false
+                isFirstClick = false
             } else {
                 val value: String = (secondValue.toString() + "4")
                 et_field.text = SpannableStringBuilder(value)
@@ -190,20 +177,20 @@ class CalcActivity : AppCompatActivity() {
     fun click5(view: View) {
         if (resultIsEmpty) {
             if (!isOperatorClick) {
-                if (isFirstClick5) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("5")
                     firstValue = 5
-                    isFirstClick5 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (firstValue.toString() + "5")
                     et_field.text = SpannableStringBuilder(value)
                     firstValue = Integer.parseInt(value)
                 }
             } else {
-                if (isFirstClick5) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("5")
                     secondValue = 5
-                    isFirstClick5 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (secondValue.toString() + "5")
                     et_field.text = SpannableStringBuilder(value)
@@ -212,10 +199,10 @@ class CalcActivity : AppCompatActivity() {
             }
         } else {
             firstValue = resultValue
-            if (isFirstClick5) {
+            if (isFirstClick) {
                 et_field.text = SpannableStringBuilder("5")
                 secondValue = 5
-                isFirstClick5 = false
+                isFirstClick = false
             } else {
                 val value: String = (secondValue.toString() + "5")
                 et_field.text = SpannableStringBuilder(value)
@@ -227,20 +214,20 @@ class CalcActivity : AppCompatActivity() {
     fun click6(view: View) {
         if (resultIsEmpty) {
             if (!isOperatorClick) {
-                if (isFirstClick6) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("6")
                     firstValue = 6
-                    isFirstClick6 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (firstValue.toString() + "6")
                     et_field.text = SpannableStringBuilder(value)
                     firstValue = Integer.parseInt(value)
                 }
             } else {
-                if (isFirstClick6) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("6")
                     secondValue = 6
-                    isFirstClick6 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (secondValue.toString() + "6")
                     et_field.text = SpannableStringBuilder(value)
@@ -249,10 +236,10 @@ class CalcActivity : AppCompatActivity() {
             }
         } else {
             firstValue = resultValue
-            if (isFirstClick6) {
+            if (isFirstClick) {
                 et_field.text = SpannableStringBuilder("6")
                 secondValue = 6
-                isFirstClick6 = false
+                isFirstClick = false
             } else {
                 val value: String = (secondValue.toString() + "6")
                 et_field.text = SpannableStringBuilder(value)
@@ -264,20 +251,20 @@ class CalcActivity : AppCompatActivity() {
     fun click7(view: View) {
         if (resultIsEmpty) {
             if (!isOperatorClick) {
-                if (isFirstClick7) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("7")
                     firstValue = 7
-                    isFirstClick7 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (firstValue.toString() + "7")
                     et_field.text = SpannableStringBuilder(value)
                     firstValue = Integer.parseInt(value)
                 }
             } else {
-                if (isFirstClick7) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("7")
                     secondValue = 7
-                    isFirstClick7 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (secondValue.toString() + "7")
                     et_field.text = SpannableStringBuilder(value)
@@ -286,10 +273,10 @@ class CalcActivity : AppCompatActivity() {
             }
         } else {
             firstValue = resultValue
-            if (isFirstClick7) {
+            if (isFirstClick) {
                 et_field.text = SpannableStringBuilder("7")
                 secondValue = 7
-                isFirstClick7 = false
+                isFirstClick = false
             } else {
                 val value: String = (secondValue.toString() + "7")
                 et_field.text = SpannableStringBuilder(value)
@@ -301,20 +288,20 @@ class CalcActivity : AppCompatActivity() {
     fun click8(view: View) {
         if (resultIsEmpty) {
             if (!isOperatorClick) {
-                if (isFirstClick8) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("8")
                     firstValue = 8
-                    isFirstClick8 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (firstValue.toString() + "8")
                     et_field.text = SpannableStringBuilder(value)
                     firstValue = Integer.parseInt(value)
                 }
             } else {
-                if (isFirstClick8) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("8")
                     secondValue = 8
-                    isFirstClick8 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (secondValue.toString() + "8")
                     et_field.text = SpannableStringBuilder(value)
@@ -323,10 +310,10 @@ class CalcActivity : AppCompatActivity() {
             }
         } else {
             firstValue = resultValue
-            if (isFirstClick8) {
+            if (isFirstClick) {
                 et_field.text = SpannableStringBuilder("8")
                 secondValue = 8
-                isFirstClick8 = false
+                isFirstClick = false
             } else {
                 val value: String = (secondValue.toString() + "8")
                 et_field.text = SpannableStringBuilder(value)
@@ -338,20 +325,20 @@ class CalcActivity : AppCompatActivity() {
     fun click9(view: View) {
         if (resultIsEmpty) {
             if (!isOperatorClick) {
-                if (isFirstClick9) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("9")
                     firstValue = 9
-                    isFirstClick9 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (firstValue.toString() + "9")
                     et_field.text = SpannableStringBuilder(value)
                     firstValue = Integer.parseInt(value)
                 }
             } else {
-                if (isFirstClick9) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("9")
                     secondValue = 9
-                    isFirstClick9 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (secondValue.toString() + "9")
                     et_field.text = SpannableStringBuilder(value)
@@ -360,10 +347,10 @@ class CalcActivity : AppCompatActivity() {
             }
         } else {
             firstValue = resultValue
-            if (isFirstClick9) {
+            if (isFirstClick) {
                 et_field.text = SpannableStringBuilder("9")
                 secondValue = 9
-                isFirstClick9 = false
+                isFirstClick = false
             } else {
                 val value: String = (secondValue.toString() + "9")
                 et_field.text = SpannableStringBuilder(value)
@@ -375,20 +362,20 @@ class CalcActivity : AppCompatActivity() {
     fun click0(view: View) {
         if (resultIsEmpty) {
             if (!isOperatorClick) {
-                if (isFirstClick0) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("0")
                     firstValue = 0
-                    isFirstClick0 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (firstValue.toString() + "0")
                     et_field.text = SpannableStringBuilder(value)
                     firstValue = Integer.parseInt(value)
                 }
             } else {
-                if (isFirstClick0) {
+                if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("0")
                     secondValue = 0
-                    isFirstClick0 = false
+                    isFirstClick = false
                 } else {
                     val value: String = (secondValue.toString() + "0")
                     et_field.text = SpannableStringBuilder(value)
@@ -397,10 +384,10 @@ class CalcActivity : AppCompatActivity() {
             }
         } else {
             firstValue = resultValue
-            if (isFirstClick0) {
+            if (isFirstClick) {
                 et_field.text = SpannableStringBuilder("0")
                 secondValue = 0
-                isFirstClick0 = false
+                isFirstClick = false
             } else {
                 val value: String = (secondValue.toString() + "0")
                 et_field.text = SpannableStringBuilder(value)
@@ -429,6 +416,24 @@ class CalcActivity : AppCompatActivity() {
         typeOfOperator = 4
     }
 
+    fun clearClick(view: View) {
+//        et_field.text = SpannableStringBuilder("0")
+//        firstValue = 0
+//        secondValue = 0
+//        resultValue = 0
+//
+//        isFirstClick = true
+//        isOperatorClick = false
+//        resultIsEmpty = false
+        restartActivity()
+    }
+
+    private fun restartActivity() {
+        val intent = (Intent(this@CalcActivity, CalcActivity::class.java))
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+    }
+
     fun equalsClick(view: View) {
         isOperatorClick = false
         equals()
@@ -446,24 +451,30 @@ class CalcActivity : AppCompatActivity() {
         firstValue = 0
         secondValue = 0
 
-        isFirstClick1 = true
-        isFirstClick2 = true
-        isFirstClick3 = true
-        isFirstClick4 = true
-        isFirstClick5 = true
-        isFirstClick6 = true
-        isFirstClick7 = true
-        isFirstClick8 = true
-        isFirstClick9 = true
-        isFirstClick0 = true
-
+        isFirstClick = true
         isOperatorClick = false
         resultIsEmpty = false
     }
 
-    private fun restartActivity() {
-        val intent = (Intent(this@CalcActivity, CalcActivity::class.java))
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        startActivity(intent)
+    private fun blinkEditText() {
+        val handler = Handler()
+
+        Thread(Runnable {
+            val timeToBlink = 500
+            try {
+                Thread.sleep(timeToBlink.toLong())
+            } catch (e: Exception) {
+            }
+
+            handler.post {
+                val editText = et_field
+                if (editText.visibility == View.VISIBLE) {
+                    editText.visibility = View.INVISIBLE
+                } else {
+                    editText.visibility = View.VISIBLE
+                }
+                blinkEditText()
+            }
+        }).start()
     }
 }
