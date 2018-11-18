@@ -2,13 +2,11 @@ package com.georgcantor.kotlinsamples.rxcalculator
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.text.SpannableStringBuilder
 import android.view.View
 import com.georgcantor.kotlinsamples.R
 import kotlinx.android.synthetic.main.activity_calculator.*
-
 
 class CalcActivity : AppCompatActivity() {
 
@@ -20,25 +18,49 @@ class CalcActivity : AppCompatActivity() {
     private var isFirstClick: Boolean = true
     private var isOperatorClick: Boolean = false
     private var resultIsEmpty: Boolean = true
+    private var isCalcFinished: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)
+
+        val value = intent.getStringExtra("digit") ?: return
+        if (!value.isEmpty()) {
+            isFirstClick = false
+            val digit: Int = Integer.parseInt(value)
+            firstValue = digit
+            et_field.text = SpannableStringBuilder(digit.toString())
+        }
     }
 
     fun click1(view: View) {
-        if (resultIsEmpty) {
-            if (!isOperatorClick) {
-                if (isFirstClick) {
-                    et_field.text = SpannableStringBuilder("1")
-                    firstValue = 1
-                    isFirstClick = false
+        if (isCalcFinished && !isOperatorClick) {
+            restartAndSend("1")
+        } else {
+            if (resultIsEmpty) {
+                if (!isOperatorClick) {
+                    if (isFirstClick) {
+                        et_field.text = SpannableStringBuilder("1")
+                        firstValue = 1
+                        isFirstClick = false
+                    } else {
+                        val value: String = (firstValue.toString() + "1")
+                        et_field.text = SpannableStringBuilder(value)
+                        firstValue = Integer.parseInt(value)
+                    }
                 } else {
-                    val value: String = (firstValue.toString() + "1")
-                    et_field.text = SpannableStringBuilder(value)
-                    firstValue = Integer.parseInt(value)
+                    if (isFirstClick) {
+                        et_field.text = SpannableStringBuilder("1")
+                        secondValue = 1
+                        isFirstClick = false
+                    } else {
+                        val value: String = (secondValue.toString() + "1")
+                        et_field.text = SpannableStringBuilder(value)
+                        secondValue = Integer.parseInt(value)
+                    }
                 }
             } else {
+                firstValue = resultValue
                 if (isFirstClick) {
                     et_field.text = SpannableStringBuilder("1")
                     secondValue = 1
@@ -48,17 +70,6 @@ class CalcActivity : AppCompatActivity() {
                     et_field.text = SpannableStringBuilder(value)
                     secondValue = Integer.parseInt(value)
                 }
-            }
-        } else {
-            firstValue = resultValue
-            if (isFirstClick) {
-                et_field.text = SpannableStringBuilder("1")
-                secondValue = 1
-                isFirstClick = false
-            } else {
-                val value: String = (secondValue.toString() + "1")
-                et_field.text = SpannableStringBuilder(value)
-                secondValue = Integer.parseInt(value)
             }
         }
     }
@@ -434,6 +445,13 @@ class CalcActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun restartAndSend(value: String) {
+        val intent = (Intent(this@CalcActivity, CalcActivity::class.java))
+        intent.putExtra("digit", value)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+    }
+
     fun equalsClick(view: View) {
         isOperatorClick = false
         equals()
@@ -454,27 +472,6 @@ class CalcActivity : AppCompatActivity() {
         isFirstClick = true
         isOperatorClick = false
         resultIsEmpty = false
-    }
-
-    private fun blinkEditText() {
-        val handler = Handler()
-
-        Thread(Runnable {
-            val timeToBlink = 500
-            try {
-                Thread.sleep(timeToBlink.toLong())
-            } catch (e: Exception) {
-            }
-
-            handler.post {
-                val editText = et_field
-                if (editText.visibility == View.VISIBLE) {
-                    editText.visibility = View.INVISIBLE
-                } else {
-                    editText.visibility = View.VISIBLE
-                }
-                blinkEditText()
-            }
-        }).start()
+        isCalcFinished = true
     }
 }
