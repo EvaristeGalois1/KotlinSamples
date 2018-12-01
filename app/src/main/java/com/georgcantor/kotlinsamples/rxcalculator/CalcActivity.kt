@@ -110,7 +110,7 @@ class CalcActivity : AppCompatActivity() {
                     secondValue = 2.0
                     isFirstClick = false
                 } else {
-                    val value: String = (secondValue.toString() + "2")
+                    val value: String = ((dFormat.format(secondValue)).toString() + "2")
                     et_field.text = SpannableStringBuilder(value)
                     secondValue = (value).toDouble()
                 }
@@ -151,7 +151,7 @@ class CalcActivity : AppCompatActivity() {
                     secondValue = 3.0
                     isFirstClick = false
                 } else {
-                    val value: String = (secondValue.toString() + "3")
+                    val value: String = ((dFormat.format(secondValue)).toString() + "3")
                     et_field.text = SpannableStringBuilder(value)
                     secondValue = (value).toDouble()
                 }
@@ -159,88 +159,88 @@ class CalcActivity : AppCompatActivity() {
         }
     }
 
-//    fun click4(view: View) {
-//        if (isCalcFinished && !isOperatorClick) {
-//            restartAndSend("4")
-//        } else {
-//            if (resultIsEmpty) {
-//                if (!isOperatorClick) {
-//                    if (isFirstClick) {
-//                        et_field.text = SpannableStringBuilder("4")
-//                        firstValue = 4
-//                        isFirstClick = false
-//                    } else {
-//                        val value: String = (firstValue.toString() + "4")
-//                        et_field.text = SpannableStringBuilder(value)
-//                        firstValue = Integer.parseInt(value)
-//                    }
-//                } else {
-//                    if (isFirstClick) {
-//                        et_field.text = SpannableStringBuilder("4")
-//                        secondValue = 4
-//                        isFirstClick = false
-//                    } else {
-//                        val value: String = (secondValue.toString() + "4")
-//                        et_field.text = SpannableStringBuilder(value)
-//                        secondValue = Integer.parseInt(value)
-//                    }
-//                }
-//            } else {
-//                firstValue = resultValue
-//                if (isFirstClick) {
-//                    et_field.text = SpannableStringBuilder("4")
-//                    secondValue = 4
-//                    isFirstClick = false
-//                } else {
-//                    val value: String = (secondValue.toString() + "4")
-//                    et_field.text = SpannableStringBuilder(value)
-//                    secondValue = Integer.parseInt(value)
-//                }
-//            }
-//        }
-//    }
-//
-//    fun click5(view: View) {
-//        if (isCalcFinished && !isOperatorClick) {
-//            restartAndSend("5")
-//        } else {
-//            if (resultIsEmpty) {
-//                if (!isOperatorClick) {
-//                    if (isFirstClick) {
-//                        et_field.text = SpannableStringBuilder("5")
-//                        firstValue = 5
-//                        isFirstClick = false
-//                    } else {
-//                        val value: String = (firstValue.toString() + "5")
-//                        et_field.text = SpannableStringBuilder(value)
-//                        firstValue = Integer.parseInt(value)
-//                    }
-//                } else {
-//                    if (isFirstClick) {
-//                        et_field.text = SpannableStringBuilder("5")
-//                        secondValue = 5
-//                        isFirstClick = false
-//                    } else {
-//                        val value: String = (secondValue.toString() + "5")
-//                        et_field.text = SpannableStringBuilder(value)
-//                        secondValue = Integer.parseInt(value)
-//                    }
-//                }
-//            } else {
-//                firstValue = resultValue
-//                if (isFirstClick) {
-//                    et_field.text = SpannableStringBuilder("5")
-//                    secondValue = 5
-//                    isFirstClick = false
-//                } else {
-//                    val value: String = (secondValue.toString() + "5")
-//                    et_field.text = SpannableStringBuilder(value)
-//                    secondValue = Integer.parseInt(value)
-//                }
-//            }
-//        }
-//    }
-//
+    fun click4(view: View) {
+        if (isCalcFinished && !isOperatorClick) {
+            restartAndSend("4")
+        } else {
+            if (resultIsEmpty) {
+                if (!isOperatorClick) {
+                    if (isFirstClick) {
+                        et_field.text = SpannableStringBuilder("4")
+                        firstValue = 4.0
+                        isFirstClick = false
+                    } else {
+                        val value: String = ((dFormat.format(firstValue)).toString() + "4")
+                        et_field.text = SpannableStringBuilder(value)
+                        firstValue = (value).toDouble()
+                    }
+                } else {
+                    if (isFirstClick) {
+                        et_field.text = SpannableStringBuilder("4")
+                        secondValue = 4.0
+                        isFirstClick = false
+                    } else {
+                        val value: String = ((dFormat.format(secondValue)).toString() + "4")
+                        et_field.text = SpannableStringBuilder(value)
+                        secondValue = (value).toDouble()
+                    }
+                }
+            } else {
+                firstValue = resultValue
+                if (isFirstClick) {
+                    et_field.text = SpannableStringBuilder("4")
+                    secondValue = 4.0
+                    isFirstClick = false
+                } else {
+                    val value: String = ((dFormat.format(secondValue)).toString() + "4")
+                    et_field.text = SpannableStringBuilder(value)
+                    secondValue = (value).toDouble()
+                }
+            }
+        }
+    }
+
+    fun click5(view: View) {
+        if (isCalcFinished && !isOperatorClick) {
+            restartAndSend("5")
+        } else {
+            if (resultIsEmpty) {
+                if (!isOperatorClick) {
+                    if (isFirstClick) {
+                        et_field.text = SpannableStringBuilder("5")
+                        firstValue = 5.0
+                        isFirstClick = false
+                    } else {
+                        val value: String = ((dFormat.format(firstValue)).toString() + "5")
+                        et_field.text = SpannableStringBuilder(value)
+                        firstValue = (value).toDouble()
+                    }
+                } else {
+                    if (isFirstClick) {
+                        et_field.text = SpannableStringBuilder("5")
+                        secondValue = 5.0
+                        isFirstClick = false
+                    } else {
+                        val value: String = ((dFormat.format(secondValue)).toString() + "5")
+                        et_field.text = SpannableStringBuilder(value)
+                        secondValue = (value).toDouble()
+                    }
+                }
+            } else {
+                firstValue = resultValue
+                if (isFirstClick) {
+                    et_field.text = SpannableStringBuilder("5")
+                    secondValue = 5.0
+                    isFirstClick = false
+                } else {
+                    val value: String = ((dFormat.format(secondValue)).toString() + "5")
+                    et_field.text = SpannableStringBuilder(value)
+                    secondValue = (value).toDouble()
+                }
+            }
+        }
+    }
+
 //    fun click6(view: View) {
 //        if (isCalcFinished && !isOperatorClick) {
 //            restartAndSend("6")
