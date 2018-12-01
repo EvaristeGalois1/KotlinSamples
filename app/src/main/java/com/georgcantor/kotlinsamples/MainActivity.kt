@@ -10,6 +10,7 @@ import com.georgcantor.kotlinsamples.exoplayer.ExoActivity
 import com.georgcantor.kotlinsamples.mvvm.ui.PostListActivity
 import com.georgcantor.kotlinsamples.riddles.FlatMapActivity
 import com.georgcantor.kotlinsamples.riddles.RiddleActivity
+import com.georgcantor.kotlinsamples.riddles.RxActivity
 import com.georgcantor.kotlinsamples.riddles.SumActivity
 import com.georgcantor.kotlinsamples.roulette.RouletteActivity
 import com.georgcantor.kotlinsamples.rxcalculator.CalcActivity
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun filterClick(view: View) {
-        val intent = Intent(this, RouletteActivity::class.java)
+        val intent = Intent(this, RxActivity::class.java)
         startActivity(intent)
     }
 }

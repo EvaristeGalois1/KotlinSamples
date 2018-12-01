@@ -10,10 +10,6 @@ import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_riddle.*
 
-
-
-
-
 class RiddleActivity : AppCompatActivity() {
 
     private lateinit var list: List<Int>

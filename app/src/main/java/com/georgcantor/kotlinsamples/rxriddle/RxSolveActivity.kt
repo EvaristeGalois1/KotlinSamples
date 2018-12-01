@@ -53,7 +53,7 @@ class RxSolveActivity : AppCompatActivity() {
 //    private fun getObserver(): Observer<Int> {
 //        return object : Observer<Int> {
 //
-//            override fun onSubscribe(d: Disposable) {
+//            override fun onSubscribe(decimalFormat: Disposable) {
 //            }
 //
 //            override fun onNext(t: Int) {
