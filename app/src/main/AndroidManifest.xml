@@ -49,7 +49,7 @@
         <activity android:name=".roulette.RouletteActivity" />
         <activity android:name=".rxriddle.PrimeActivity" />
         <activity android:name=".riddles.RxActivity" />
-        <activity android:name=".viewmodel.SampleActivity"></activity>
+        <activity android:name=".viewmodel.ui.SampleActivity"></activity>
     </application>
 
 </manifest>
