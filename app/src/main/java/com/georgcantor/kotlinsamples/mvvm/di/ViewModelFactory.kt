@@ -16,6 +16,6 @@ class ViewModelFactory(private val activity: AppCompatActivity) : ViewModelProvi
             @Suppress("UNCHECKED_CAST")
             return PostListViewModel(db.postDao()) as T
         }
-        throw IllegalArgumentException("Unknown ViewModel class")
+        throw IllegalArgumentException("Unknown MenuViewModel class")
     }
 }

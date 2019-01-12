@@ -13,46 +13,46 @@ class RestClient {
         private const val REQUEST_TIMEOUT = 60
         private val retrofit: Retrofit? = null
         private var okHttpClient: OkHttpClient? = null
-    }
 
-    fun getClient(): Retrofit? {
-        if (okHttpClient == null) {
-            initOkHttp()
+        fun getClient(): Retrofit? {
+            if (okHttpClient == null) {
+                initOkHttp()
 
-            if (retrofit == null) {
-                val retrofit = Retrofit.Builder()
-                        .baseUrl(BASE_URL)
-                        .client(okHttpClient)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build()
+                if (retrofit == null) {
+                    val retrofit = Retrofit.Builder()
+                            .baseUrl(BASE_URL)
+                            .client(okHttpClient)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build()
+                }
             }
+
+            return retrofit
         }
 
-        return retrofit
-    }
+        private fun initOkHttp() {
+            val httpClient = OkHttpClient().newBuilder()
+                    .connectTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
+                    .readTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
+                    .writeTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
 
-    private fun initOkHttp() {
-        val httpClient = OkHttpClient().newBuilder()
-                .connectTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
-                .readTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
-                .writeTimeout(REQUEST_TIMEOUT.toLong(), TimeUnit.SECONDS)
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.level = HttpLoggingInterceptor.Level.BODY
 
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
+            httpClient.addInterceptor(interceptor)
 
-        httpClient.addInterceptor(interceptor)
+            httpClient.addInterceptor { chain ->
+                val original = chain.request()
+                val requestBuilder = original.newBuilder()
+                        .addHeader("Accept", "application/json")
+                        .addHeader("Request-Type", "Android")
+                        .addHeader("Content-Type", "application/json")
 
-        httpClient.addInterceptor { chain ->
-            val original = chain.request()
-            val requestBuilder = original.newBuilder()
-                    .addHeader("Accept", "application/json")
-                    .addHeader("Request-Type", "Android")
-                    .addHeader("Content-Type", "application/json")
+                val request = requestBuilder.build()
+                chain.proceed(request)
+            }
 
-            val request = requestBuilder.build()
-            chain.proceed(request)
+            okHttpClient = httpClient.build()
         }
-
-        okHttpClient = httpClient.build()
     }
 }

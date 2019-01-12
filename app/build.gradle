@@ -41,7 +41,7 @@ dependencies {
     implementation 'com.android.support:palette-v7:27.1.1'
     // Support Design
     implementation 'com.android.support:design:27.1.1'
-    // LiveData & ViewModel
+    // LiveData & MenuViewModel
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
     // Room
     implementation "android.arch.persistence.room:runtime:$room_version"
