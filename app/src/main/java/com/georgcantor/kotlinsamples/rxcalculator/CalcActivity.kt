@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.SpannableStringBuilder
 import android.view.View
+import android.widget.Toast
 import com.georgcantor.kotlinsamples.R
 import kotlinx.android.synthetic.main.activity_calculator.*
 import java.text.DecimalFormat
@@ -22,6 +23,7 @@ class CalcActivity : AppCompatActivity() {
     private var isOperatorClick: Boolean = false
     private var resultIsEmpty: Boolean = true
     private var isCalcFinished: Boolean = false
+    private var isDotClicked: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,9 +49,16 @@ class CalcActivity : AppCompatActivity() {
                         firstValue = 1.0
                         isFirstClick = false
                     } else {
-                        val value: String = ((dFormat.format(firstValue)).toString() + "1")
-                        et_field.text = SpannableStringBuilder(value)
-                        firstValue = (value).toDouble()
+                        if (isDotClicked) {
+                            val value: String = ((dFormat.format(firstValue)).toString() + ".1")
+                            et_field.text = SpannableStringBuilder(value)
+                            firstValue = (value).toDouble()
+                            isDotClicked = false
+                        } else {
+                            val value: String = ((dFormat.format(firstValue)).toString() + "1")
+                            et_field.text = SpannableStringBuilder(value)
+                            firstValue = (value).toDouble()
+                        }
                     }
                 } else {
                     if (isFirstClick) {
@@ -57,9 +66,16 @@ class CalcActivity : AppCompatActivity() {
                         secondValue = 1.0
                         isFirstClick = false
                     } else {
-                        val value: String = ((dFormat.format(secondValue)).toString() + "1")
-                        et_field.text = SpannableStringBuilder(value)
-                        secondValue = (value).toDouble()
+                        if (isDotClicked) {
+                            val value: String = ((dFormat.format(firstValue)).toString() + ".1")
+                            et_field.text = SpannableStringBuilder(value)
+                            firstValue = (value).toDouble()
+                            isDotClicked = false
+                        } else {
+                            val value: String = ((dFormat.format(firstValue)).toString() + "1")
+                            et_field.text = SpannableStringBuilder(value)
+                            firstValue = (value).toDouble()
+                        }
                     }
                 }
             } else {
@@ -69,9 +85,16 @@ class CalcActivity : AppCompatActivity() {
                     secondValue = 1.0
                     isFirstClick = false
                 } else {
-                    val value: String = ((dFormat.format(secondValue)).toString() + "1")
-                    et_field.text = SpannableStringBuilder(value)
-                    secondValue = (value).toDouble()
+                    if (isDotClicked) {
+                        val value: String = ((dFormat.format(secondValue)).toString() + ".1")
+                        et_field.text = SpannableStringBuilder(value)
+                        secondValue = (value).toDouble()
+                        isDotClicked = false
+                    } else {
+                        val value: String = ((dFormat.format(secondValue)).toString() + "1")
+                        et_field.text = SpannableStringBuilder(value)
+                        secondValue = (value).toDouble()
+                    }
                 }
             }
         }
@@ -88,19 +111,33 @@ class CalcActivity : AppCompatActivity() {
                         firstValue = 2.0
                         isFirstClick = false
                     } else {
-                        val value: String = ((dFormat.format(firstValue)).toString() + "2")
-                        et_field.text = SpannableStringBuilder(value)
-                        firstValue = (value).toDouble()
+                        if (isDotClicked) {
+                            val value: String = ((dFormat.format(firstValue)).toString() + ".2")
+                            et_field.text = SpannableStringBuilder(value)
+                            firstValue = (value).toDouble()
+                            isDotClicked = false
+                        } else {
+                            val value: String = ((dFormat.format(firstValue)).toString() + "2")
+                            et_field.text = SpannableStringBuilder(value)
+                            firstValue = (value).toDouble()
+                        }
                     }
                 } else {
                     if (isFirstClick) {
                         et_field.text = SpannableStringBuilder("2")
-                        secondValue = 2.0
+                        secondValue = 2.0   
                         isFirstClick = false
                     } else {
-                        val value: String = ((dFormat.format(secondValue)).toString() + "2")
-                        et_field.text = SpannableStringBuilder(value)
-                        secondValue = (value).toDouble()
+                        if (isDotClicked) {
+                            val value: String = ((dFormat.format(firstValue)).toString() + ".2")
+                            et_field.text = SpannableStringBuilder(value)
+                            firstValue = (value).toDouble()
+                            isDotClicked = false
+                        } else {
+                            val value: String = ((dFormat.format(firstValue)).toString() + "2")
+                            et_field.text = SpannableStringBuilder(value)
+                            firstValue = (value).toDouble()
+                        }
                     }
                 }
             } else {
@@ -110,9 +147,16 @@ class CalcActivity : AppCompatActivity() {
                     secondValue = 2.0
                     isFirstClick = false
                 } else {
-                    val value: String = ((dFormat.format(secondValue)).toString() + "2")
-                    et_field.text = SpannableStringBuilder(value)
-                    secondValue = (value).toDouble()
+                    if (isDotClicked) {
+                        val value: String = ((dFormat.format(secondValue)).toString() + ".2")
+                        et_field.text = SpannableStringBuilder(value)
+                        secondValue = (value).toDouble()
+                        isDotClicked = false
+                    } else {
+                        val value: String = ((dFormat.format(secondValue)).toString() + "2")
+                        et_field.text = SpannableStringBuilder(value)
+                        secondValue = (value).toDouble()
+                    }
                 }
             }
         }
@@ -448,22 +492,30 @@ class CalcActivity : AppCompatActivity() {
 
     fun plusClick(view: View) {
         isOperatorClick = true
+        Toast.makeText(this, "isOperatorClick", Toast.LENGTH_SHORT).show()
         typeOfOperator = 1
     }
 
     fun minusClick(view: View) {
         isOperatorClick = true
+        Toast.makeText(this, "isOperatorClick", Toast.LENGTH_SHORT).show()
         typeOfOperator = 2
     }
 
     fun multipleClick(view: View) {
         isOperatorClick = true
+        Toast.makeText(this, "isOperatorClick", Toast.LENGTH_SHORT).show()
         typeOfOperator = 3
     }
 
     fun divideClick(view: View) {
         isOperatorClick = true
+        Toast.makeText(this, "isOperatorClick", Toast.LENGTH_SHORT).show()
         typeOfOperator = 4
+    }
+
+    fun dotClick(view: View) {
+        isDotClicked = true
     }
 
     fun clearClick(view: View) {
