@@ -11,21 +11,16 @@ class RestClient {
     companion object {
         const val BASE_URL: String = "https://api.androidhive.info/json/"
         private const val REQUEST_TIMEOUT = 60
-        private val retrofit: Retrofit? = null
         private var okHttpClient: OkHttpClient? = null
 
-        fun getClient(): Retrofit? {
-            if (okHttpClient == null) {
-                initOkHttp()
+        fun getClient(): Retrofit {
+            initOkHttp()
 
-                if (retrofit == null) {
-                    val retrofit = Retrofit.Builder()
-                            .baseUrl(BASE_URL)
-                            .client(okHttpClient)
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build()
-                }
-            }
+            val retrofit = Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .client(okHttpClient)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
 
             return retrofit
         }

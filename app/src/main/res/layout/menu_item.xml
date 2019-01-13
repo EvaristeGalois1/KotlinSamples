@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="@dimen/dimen_10">
 
     <ImageView
         android:id="@+id/thumbnail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/thumbnail"
+        android:layout_height="@dimen/thumbnail"
+        android:layout_marginRight="@dimen/activity_padding_horizontal"
         android:scaleType="centerCrop" />
 
     <TextView
@@ -19,7 +20,8 @@
         android:layout_toRightOf="@id/thumbnail"
         android:ellipsize="end"
         android:fontFamily="sans-serif-medium"
-        android:maxLines="1" />
+        android:maxLines="1"
+        android:textSize="@dimen/itemName" />
 
     <TextView
         android:id="@+id/description"
@@ -27,7 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/name"
         android:layout_marginTop="5dp"
-        android:layout_toRightOf="@id/thumbnail" />
+        android:layout_toRightOf="@id/thumbnail"
+        android:textSize="@dimen/itemDescription" />
 
     <TextView
         android:id="@+id/price"

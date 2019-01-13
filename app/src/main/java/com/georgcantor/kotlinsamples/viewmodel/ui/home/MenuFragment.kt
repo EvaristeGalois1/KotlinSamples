@@ -6,23 +6,16 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import butterknife.BindView
-import butterknife.ButterKnife
-import butterknife.Unbinder
 import com.georgcantor.kotlinsamples.R
 import com.georgcantor.kotlinsamples.viewmodel.model.MenuItem
+import kotlinx.android.synthetic.main.fragment_menu.*
 
 class MenuFragment : Fragment() {
 
-    @BindView(R.id.recycler_view)
-    var recyclerView: RecyclerView? = null
-
     lateinit var viewModel: MenuViewModel
-    lateinit var unbinder: Unbinder
     lateinit var adapter: MenuListAdapter
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -30,7 +23,6 @@ class MenuFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_menu, container, false)
-        unbinder = ButterKnife.bind(this, view)
 
         return view
     }
@@ -39,10 +31,10 @@ class MenuFragment : Fragment() {
         adapter = MenuListAdapter(requireContext())
         viewModel = ViewModelProviders.of(requireActivity()).get(MenuViewModel::class.java)
 
-        recyclerView?.addItemDecoration(DividerItemDecoration(requireContext(),
+        recycler_view?.addItemDecoration(DividerItemDecoration(requireContext(),
                 DividerItemDecoration.VERTICAL))
-        recyclerView?.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView?.adapter = adapter
+        recycler_view?.layoutManager = LinearLayoutManager(requireContext())
+        recycler_view?.adapter = adapter
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

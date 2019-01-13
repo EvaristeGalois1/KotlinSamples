@@ -13,7 +13,7 @@ import retrofit2.Response
 class MenuRepository {
 
     private var restClient: RestService =
-            RestClient.getClient()!!.create(RestService::class.java)
+            RestClient.getClient().create(RestService::class.java)
 
     fun getMenu(): LiveData<List<MenuItem>> {
         val data: MutableLiveData<List<MenuItem>> = MutableLiveData()
