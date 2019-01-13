@@ -20,7 +20,6 @@ class MenuRepository {
         val call: Call<List<MenuItem>> = restClient.getMenu()
 
         call.enqueue(object : Callback<List<MenuItem>> {
-
             override fun onResponse(call: Call<List<MenuItem>>,
                                     response: Response<List<MenuItem>>) {
                 data.value = response.body()
@@ -30,5 +29,7 @@ class MenuRepository {
                 Log.e("MenuRepository", "error: " + t.message)
             }
         })
+
+        return data
     }
 }
