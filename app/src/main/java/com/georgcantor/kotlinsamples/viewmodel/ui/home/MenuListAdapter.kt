@@ -51,9 +51,7 @@ class MenuListAdapter(private val context: Context) :
 
         internal fun bind(menuItem: MenuItem) {
             name!!.text = menuItem.name
-
-            description!!.setText(menuItem.description)
-
+            description!!.text = menuItem.description
             price!!.text = "Price: " + menuItem.price
 
             thumbnail?.let {
