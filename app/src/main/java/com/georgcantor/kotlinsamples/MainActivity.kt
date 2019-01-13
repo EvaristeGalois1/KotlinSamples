@@ -8,12 +8,12 @@ import com.georgcantor.kotlinsamples.anim.AnimActivity
 import com.georgcantor.kotlinsamples.broadcast.BroadcastActivity
 import com.georgcantor.kotlinsamples.exoplayer.ExoActivity
 import com.georgcantor.kotlinsamples.mvvm.ui.PostListActivity
+import com.georgcantor.kotlinsamples.pedometr.MetrActivity
 import com.georgcantor.kotlinsamples.riddles.FlatMapActivity
 import com.georgcantor.kotlinsamples.riddles.RiddleActivity
 import com.georgcantor.kotlinsamples.riddles.SumActivity
 import com.georgcantor.kotlinsamples.rxcalculator.CalcActivity
 import com.georgcantor.kotlinsamples.rxclick.RxClickActivity
-import com.georgcantor.kotlinsamples.viewmodel.ui.SampleActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun filterClick(view: View) {
-        val intent = Intent(this, SampleActivity::class.java)
+        val intent = Intent(this, MetrActivity::class.java)
         startActivity(intent)
     }
 }
