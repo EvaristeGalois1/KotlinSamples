@@ -35,7 +35,7 @@ class BroadcastActivity : AppCompatActivity() {
         intent.putExtra("data", "Broadcast!")
         if (localBroadcastManager == null) {
             localBroadcastManager = LocalBroadcastManager.getInstance(this)
-            localBroadcastManager?.registerReceiver(receiver, IntentFilter(Companion.BROADCAST))
+            localBroadcastManager?.registerReceiver(receiver, IntentFilter(BROADCAST))
         }
         localBroadcastManager?.sendBroadcast(intent)
     }
