@@ -12,7 +12,10 @@ import com.georgcantor.kotlinsamples.R
 
 class BroadcastActivity : AppCompatActivity() {
 
-    private val BROADCAST = "com.example.broadcast.MY_NOTIFICATION"
+    companion object {
+        private const val BROADCAST = "com.example.broadcast.MY_NOTIFICATION"
+    }
+
     private var receiver: BroadcastReceiver = MyReceiver()
     private var localBroadcastManager: LocalBroadcastManager? = null
 
@@ -32,7 +35,7 @@ class BroadcastActivity : AppCompatActivity() {
         intent.putExtra("data", "Broadcast!")
         if (localBroadcastManager == null) {
             localBroadcastManager = LocalBroadcastManager.getInstance(this)
-            localBroadcastManager?.registerReceiver(receiver, IntentFilter(BROADCAST))
+            localBroadcastManager?.registerReceiver(receiver, IntentFilter(Companion.BROADCAST))
         }
         localBroadcastManager?.sendBroadcast(intent)
     }
